@@ -1,6 +1,7 @@
 package com.BScamp.SpringMVCDemo.service;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,5 +16,6 @@ public interface MovieService {
     public Movie updateMovie(int id, Movie mo);
     public  boolean deleteMovie(int id);
     public void saveImg(MultipartFile file, HttpSession session);
-
+    public Set<String> getType();
+    public List<Movie> getCategories(String type);
 }

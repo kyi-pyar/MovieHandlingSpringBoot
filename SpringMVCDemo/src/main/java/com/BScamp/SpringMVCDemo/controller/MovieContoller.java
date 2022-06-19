@@ -32,8 +32,23 @@ public class MovieContoller {
 	@GetMapping("/movies")
 	public ModelAndView getMovies() {
 		ModelAndView mv = new ModelAndView();
-		List<Movie> movies = movieService.getMovies();
+		List<Movie> movies = movieService.getMovies();		
 		mv.addObject("movies", movies);
+		mv.addObject("types", movieService.getType());
+		mv.setViewName("movies");
+		return mv;
+	}
+	@GetMapping("/search_category")
+	public ModelAndView getMoviesbyCategories(@RequestParam("type")String type, HttpServletResponse response) {
+		
+		ModelAndView mv = new ModelAndView();
+		List<Movie> movies;
+		if(type.equals("All")) {
+			movies=movieService.getMovies();
+		}
+		 movies= movieService.getCategories(type);		
+		mv.addObject("movies", movies);
+		mv.addObject("types", movieService.getType());
 		mv.setViewName("movies");
 		return mv;
 	}

@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Set;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -99,6 +100,19 @@ public class MovieServiceImpl implements MovieService{
 	       
 	    
 		
+	}
+
+	@Override
+	public Set<String> getType() {
+	
+		return movieRepository.getType();
+		
+	}
+
+	@Override
+	public List<Movie> getCategories(String type) {
+		// TODO Auto-generated method stub
+		return movieRepository.findByType(type);
 	}
     
    
